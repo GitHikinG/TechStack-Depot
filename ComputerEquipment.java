@@ -1,7 +1,7 @@
-public class VirtualReality {
-    enum TypeReality {
-        GLASSES,
-        CONTROLLER,
+public class ComputerEquipment {
+    enum TypeEquipment {
+        LAPTOP,
+        COMPONENT
     }
     enum Color {
         YELLOW,
@@ -12,23 +12,22 @@ public class VirtualReality {
         BLUE
     }
     private String name;
-    private TypeReality type;
+    private TypeEquipment type;
     private Double price;
     private SpecialOffer offer;
     private Color color;
     private Manufacturer manufacturer;
-    private String typeOfTechnology;
+    private int yearsOfWarranty;
 
-    public VirtualReality(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
+    public ComputerEquipment(String name, TypeEquipment type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
         this.name = name;
         this.type = type;
         this.price = price;
         this.offer = offer;
         this.color = color;
         this.manufacturer = manufacturer;
-        this.typeOfTechnology = typeOfTechnology;
+        this.yearsOfWarranty = yearsOfWarranty;
     }
-
 
     public String getName() {
         return name;
@@ -38,11 +37,11 @@ public class VirtualReality {
         this.name = name;
     }
 
-    public TypeReality getType() {
+    public TypeEquipment getType() {
         return type;
     }
 
-    public void setType(TypeReality type) {
+    public void setType(TypeEquipment type) {
         this.type = type;
     }
 
@@ -78,25 +77,24 @@ public class VirtualReality {
         this.manufacturer = manufacturer;
     }
 
-    public String getTypeOfTechnology() {
-        return typeOfTechnology;
+    public int getYearsOfWarranty() {
+        return yearsOfWarranty;
     }
 
-    public void setTypeOfTechnology(String typeOfTechnology) {
-        this.typeOfTechnology = typeOfTechnology;
+    public void setYearsOfWarranty(int yearsOfWarranty) {
+        this.yearsOfWarranty = yearsOfWarranty;
     }
-
 
     @Override
     public String toString() {
-        return "VirtualReality{" +
+        return "ComputerEqupiment{" +
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", price=" + price +
                 ", offer=" + offer +
                 ", color=" + color +
                 ", manufacturer=" + manufacturer +
-                ", typeOfTechnology='" + typeOfTechnology + '\'' +
+                ", yearsOfWarranty=" + yearsOfWarranty +
                 '}';
     }
 }

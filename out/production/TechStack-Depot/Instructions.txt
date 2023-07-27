@@ -1,0 +1,34 @@
+Class:
+SpecialOffer (startDate, endDate, name, amount)
+item (name, type, price, SpecialOffer, colour, manufacturer)
+mobileEquipment (size)
+householdItem (yearOfManufacturing, ecoLevel)
+computerEquipment (yearsOfWarranty)
+videoEquipment (diameter, resolution)
+musicEquipment (strenght)
+virtualReality (typeOfTechnology)
+
+Subclass:
+mobilePhone
+mobileCase
+
+washingMachine
+kitchenUtensil
+
+laptop
+component
+
+monitor
+tv
+
+headphone
+microphone
+
+vrGlasses
+vrController
+
+Logic classes:
+
+user
+loginRegistration - static
+dataManipulation - static
