@@ -5,14 +5,14 @@ import java.util.Scanner;
 public class UserInterface {
 
     public static boolean logedIn = false;
-
+    public static String usernameCurrent = "";
 
     public static void main(String[] args) {
 
 
         if(logedIn) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Welcome to Tech Stack v.1.0.1.\n");
+            System.out.println("Welcome " + usernameCurrent + "! Tech Stack v.1.0.1.\n");
             System.out.println(".___________. _______   ______  __    __          _______.___________.    ___       ______  __  ___ \n" +
                     "|           ||   ____| /      ||  |  |  |        /       |           |   /   \\     /      ||  |/  / \n" +
                     "`---|  |----`|  |__   |  ,----'|  |__|  |       |   (----`---|  |----`  /  ^  \\   |  ,----'|  '  /  \n" +
@@ -61,22 +61,36 @@ public class UserInterface {
             Scanner scanner = new Scanner(System.in);
             String username = scanner.nextLine();
             System.out.println("Don't have an account? Press number 1.\n");
-            if(!username.equals("1")) {
+            String registerOption = scanner.nextLine();
+            if(!registerOption.equals("1")) {
                 System.out.println("Thank you, please enter the password\n");
                 String password = scanner.nextLine();
                 if(CheckUser(username, password)) {
-
+                    logedIn = !logedIn;
+                    usernameCurrent = username;
+                    main(args);
                 } else {
                     System.out.println("Wrong data.");
                     scanner.next();
                     main(args);
                 }
             } else {
+
+                System.out.println("Please enter your name\n");
+                String nameRegistration = scanner.nextLine();
+                System.out.println("Please enter your surname\n");
+                String surnameRegistration = scanner.nextLine();
                 System.out.println("Please enter your username\n");
                 String usernameRegistration = scanner.nextLine();
-                System.out.println("Thank you, please enter the password\n");
-                String password = scanner.nextLine();
-                createUser(usernameRegistration, password);
+                System.out.println("Please enter your email\n");
+                String emailRegistration = scanner.nextLine();
+                System.out.println("Please enter your password\n");
+                String passwordRegistration = scanner.nextLine();
+
+                User user = new User(nameRegistration, surnameRegistration, usernameRegistration, passwordRegistration, emailRegistration);
+
+                DataManipulation.Writting.writeUser(user);
+                scanner.next();
 
             }
 
