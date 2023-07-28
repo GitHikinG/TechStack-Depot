@@ -1,15 +1,94 @@
+import com.sun.tools.javac.Main;
+
 import java.util.Scanner;
 
 public class UserInterface {
+
+    public static boolean logedIn = false;
+
+
     public static void main(String[] args) {
-        MobilePhone phone1 = new MobilePhone("Galaxy", MobileEquipment.Type.PHONE, 599.99, MobileEquipment.Color.BLUE, 20.1, true);
 
 
+        if(logedIn) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Welcome to Tech Stack v.1.0.1.\n");
+            System.out.println(".___________. _______   ______  __    __          _______.___________.    ___       ______  __  ___ \n" +
+                    "|           ||   ____| /      ||  |  |  |        /       |           |   /   \\     /      ||  |/  / \n" +
+                    "`---|  |----`|  |__   |  ,----'|  |__|  |       |   (----`---|  |----`  /  ^  \\   |  ,----'|  '  /  \n" +
+                    "    |  |     |   __|  |  |     |   __   |        \\   \\       |  |      /  /_\\  \\  |  |     |    <   \n" +
+                    "    |  |     |  |____ |  `----.|  |  |  |    .----)   |      |  |     /  _____  \\ |  `----.|  .  \\  \n" +
+                    "    |__|     |_______| \\______||__|  |__|    |_______/       |__|    /__/     \\__\\ \\______||__|\\__\\\n");
+            System.out.println("Main menu\n");
+            System.out.println("1. Adding items.\n");
+            System.out.println("2. Deleting items.\n");
+            System.out.println("3. Buying items.\n");
+            System.out.println("4. Returning items.\n");
+            System.out.println("5. Searching for items.\n");
+            System.out.println("6. Logout\n");
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the version of the program 1.0. Current items for sale are:");
-        System.out.println(phone1.toString());
-        scanner.next();
 
+            int result = scanner.nextInt();
+
+            if (result < 1 || result > 6) {
+                System.out.println("Please enter a correct number corresponding to the menu.");
+                System.out.println("Press anything to continue");
+                scanner.next();
+                main(args);
+            } else {
+                switch (result) {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+
+                }
+                scanner.next();
+                main(args);
+
+            }
+        } else {
+            System.out.println("To continue you need to log in\n");
+            System.out.println("Please enter your username\n");
+            Scanner scanner = new Scanner(System.in);
+            String username = scanner.nextLine();
+            System.out.println("Don't have an account? Press number 1.\n");
+            if(!username.equals("1")) {
+                System.out.println("Thank you, please enter the password\n");
+                String password = scanner.nextLine();
+                if(CheckUser(username, password)) {
+
+                } else {
+                    System.out.println("Wrong data.");
+                    scanner.next();
+                    main(args);
+                }
+            } else {
+                System.out.println("Please enter your username\n");
+                String usernameRegistration = scanner.nextLine();
+                System.out.println("Thank you, please enter the password\n");
+                String password = scanner.nextLine();
+                createUser(usernameRegistration, password);
+
+            }
+
+        }
+
+    }
+
+    private static boolean CheckUser(String username, String password) {
+
+        return true;
+    }
+
+    private static void createUser(String usernameRegistration, String passowrd) {
     }
 }
