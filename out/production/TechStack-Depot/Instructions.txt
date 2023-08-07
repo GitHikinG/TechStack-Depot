@@ -1,6 +1,6 @@
 Class:
-SpecialOffer (startDate, endDate, name, amount)
-item (name, type, price, SpecialOffer, colour, manufacturer)
+specialOffer (startDate, endDate, name, amount)
+item (name, type, price, specialOffer, colour, manufacturer)
 mobileEquipment (size)
 householdItem (yearOfManufacturing, ecoLevel)
 computerEquipment (yearsOfWarranty)
@@ -32,3 +32,26 @@ Logic classes:
 user
 loginRegistration - static
 dataManipulation - static
+
+
+
+Functional stuff
+
+Welcome to TechStack v.1.01
+
+Main Menu
+
+Adding items
+Deleting items
+Buying items
+Returning items
+Searching for items
+Logout
+
+
+TypeEquipment, Color, name, type, price, offer, manufacturer, yearsOfWarranty
+
+
+
+
+

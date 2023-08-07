@@ -1,4 +1,10 @@
-public class ComputerEquipment {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class ComputerEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     enum TypeEquipment {
         LAPTOP,
         COMPONENT
@@ -14,20 +20,25 @@ public class ComputerEquipment {
     private String name;
     private TypeEquipment type;
     private Double price;
-    private SpecialOffer offer;
+    private ArrayList<SpecialOffer> offers;
     private Color color;
     private Manufacturer manufacturer;
     private int yearsOfWarranty;
 
-    public ComputerEquipment(String name, TypeEquipment type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
+    public ComputerEquipment() {
+
+    }
+
+    public ComputerEquipment(String name, TypeEquipment type, Double price, ArrayList<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
         this.name = name;
         this.type = type;
         this.price = price;
-        this.offer = offer;
+        this.offers = offers;
         this.color = color;
         this.manufacturer = manufacturer;
         this.yearsOfWarranty = yearsOfWarranty;
     }
+
 
     public String getName() {
         return name;
@@ -53,12 +64,12 @@ public class ComputerEquipment {
         this.price = price;
     }
 
-    public SpecialOffer getOffer() {
-        return offer;
+    public ArrayList<SpecialOffer> getOffers() {
+        return offers;
     }
 
-    public void setOffer(SpecialOffer offer) {
-        this.offer = offer;
+    public void setOffers(ArrayList<SpecialOffer> offers) {
+        this.offers = offers;
     }
 
     public Color getColor() {
@@ -85,16 +96,18 @@ public class ComputerEquipment {
         this.yearsOfWarranty = yearsOfWarranty;
     }
 
+
     @Override
     public String toString() {
-        return "ComputerEqupiment{" +
+        return "ComputerEquipment{" +
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", price=" + price +
-                ", offer=" + offer +
+                ", offers=" + offers +
                 ", color=" + color +
                 ", manufacturer=" + manufacturer +
                 ", yearsOfWarranty=" + yearsOfWarranty +
                 '}';
     }
+
 }

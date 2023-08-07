@@ -1,8 +1,19 @@
-public class Component extends ComputerEquipment {
-    public Component(String name, TypeEquipment type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
-        super(name, type, price, offer, color, manufacturer, yearsOfWarranty);
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Component extends ComputerEquipment implements Serializable {
+
+
+    private static final long serialVersionUID = 1L;
+
+    public Component(String name, TypeEquipment type, Double price, ArrayList<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
+        super(name, type, price, offers, color, manufacturer, yearsOfWarranty);
     }
 
+
+    public Component ( ) {
+
+    }
     enum Type {
         SSD,
         VIDEOCARD,
@@ -13,12 +24,14 @@ public class Component extends ComputerEquipment {
     private Type type;
 
 
-    public Component(String name, TypeEquipment type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearsOfWarranty, Type type1) {
-        super(name, type, price, offer, color, manufacturer, yearsOfWarranty);
+    public Component(String name, TypeEquipment type, Double price, ArrayList<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearsOfWarranty, Type type1) {
+        super(name, type, price, offers, color, manufacturer, yearsOfWarranty);
         this.type = type1;
     }
 
+    public Component (ComputerEquipment base, Component.Type type) {
 
+    }
 
 
     public void setType(Type type) {

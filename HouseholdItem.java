@@ -1,4 +1,10 @@
-public class HouseholdItem {
+import java.io.Serializable;
+
+public class HouseholdItem implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+
     enum TypeHousehold {
         WASHING,
         UTENSIL,

@@ -1,12 +1,16 @@
+import java.util.ArrayList;
+
 public class Laptop extends ComputerEquipment {
 
     private int ram;
     private int storage;
 
-    public Laptop(String name, TypeEquipment type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
-        super(name, type, price, offer, color, manufacturer, yearsOfWarranty);
+    public Laptop(String name, TypeEquipment type, Double price, ArrayList<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearsOfWarranty) {
+        super(name, type, price, offers, color, manufacturer, yearsOfWarranty);
     }
+    public Laptop() {
 
+    }
     public int getRam() {
         return ram;
     }
