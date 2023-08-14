@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class WashingMachine extends HouseholdItem implements Serializable {
 
@@ -6,8 +7,8 @@ public class WashingMachine extends HouseholdItem implements Serializable {
 
     private int rotations;
 
-    public WashingMachine(String name, TypeHousehold type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel, int rotations) {
-        super(name, type, price, offer, color, manufacturer, yearOfManufacturing, ecoLevel);
+    public WashingMachine(String name, TypeHousehold type, Double price, List<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel, int rotations) {
+        super(name, type, price, offers, color, manufacturer, yearOfManufacturing, ecoLevel);
         this.rotations = rotations;
     }
 

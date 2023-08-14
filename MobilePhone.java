@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class MobilePhone extends MobileEquipment implements Serializable {
 
@@ -6,8 +7,8 @@ public class MobilePhone extends MobileEquipment implements Serializable {
 
     private boolean fastCharging;
 
-    public MobilePhone(String name, Type type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, double size) {
-        super(name, type, price, offer, color, manufacturer, size);
+    public MobilePhone(String name, Type type, Double price, List<SpecialOffer> offers, Color color, Manufacturer manufacturer, double size) {
+        super(name, type, price, offers, color, manufacturer, size);
     }
 
     public MobilePhone(String name, Type type, Double price, Color color, Manufacturer manufacturer, double size, boolean fastCharging) {

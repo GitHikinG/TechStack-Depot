@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class Headphone extends MusicEquipment implements Serializable {
 
@@ -7,12 +8,12 @@ public class Headphone extends MusicEquipment implements Serializable {
     private boolean wireless;
 
 
-    public Headphone(String name, Type type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String strength) {
+    public Headphone(String name, Type type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String strength) {
         super(name, type, price, offer, color, manufacturer, strength);
     }
 
 
-    public Headphone(String name, Type type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String strength, boolean wireless) {
+    public Headphone(String name, Type type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String strength, boolean wireless) {
         super(name, type, price, offer, color, manufacturer, strength);
         this.wireless = wireless;
     }

@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class VrController extends VirtualReality implements Serializable {
 
@@ -6,7 +7,7 @@ public class VrController extends VirtualReality implements Serializable {
 
     private int numberOfButtons;
 
-    public VrController(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology, int numberOfButtons) {
+    public VrController(String name, TypeReality type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String typeOfTechnology, int numberOfButtons) {
         super(name, type, price, offer, color, manufacturer, typeOfTechnology);
         this.numberOfButtons = numberOfButtons;
     }

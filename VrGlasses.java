@@ -1,10 +1,11 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class VrGlasses extends VirtualReality implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public VrGlasses(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
+    public VrGlasses(String name, TypeReality type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
         super(name, type, price, offer, color, manufacturer, typeOfTechnology);
     }
 
@@ -17,7 +18,7 @@ public class VrGlasses extends VirtualReality implements Serializable {
     private TypeGlasses typeGlasses;
 
 
-    public VrGlasses(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology, TypeGlasses typeGlasses) {
+    public VrGlasses(String name, TypeReality type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String typeOfTechnology, TypeGlasses typeGlasses) {
         super(name, type, price, offer, color, manufacturer, typeOfTechnology);
         this.typeGlasses = typeGlasses;
     }

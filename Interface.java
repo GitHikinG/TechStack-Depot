@@ -270,7 +270,7 @@ public class Interface {
                 System.out.println("2. Item type");
                 System.out.println("3. Special offer");
                 int sortChoice = scanner.nextInt();
-
+                List<Object> itemsRead = DataManipulation.Reading.readObjects();
                 if(sortChoice < 1 || sortChoice > 3) {
                     return;
                 } else {
@@ -322,10 +322,218 @@ public class Interface {
                             for (Object item : items) {
                                 System.out.println(item);
                             }
+                            scanner.next();
+
                             break;
                         case 2:
+                            System.out.println("Please enter the type");
+                            System.out.println("1. Computer equipment");
+                            System.out.println("2. Household item");
+                            System.out.println("3. Kitchen utensil");
+                            System.out.println("4. Mobile equipment");
+                            System.out.println("5. Music equipment");
+                            System.out.println("6. Video equipment");
+                            System.out.println("7. Virtual reality");
+
+
+                            int type = scanner.nextInt();
+                            if (type < 1 || type > 7) {
+                                return;
+                            }
+                            System.out.println("Items are:");
+
+                            List<Object> itemsType = new ArrayList<Object>();
+
+
+
+                            switch (type) {
+                                case 1:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof ComputerEquipment) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 2:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof HouseholdItem) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof KitchenUtensil) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 4:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof MobileEquipment) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 5:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof MusicEquipment) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 6:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof VideoEquipment) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                                case 7:
+                                    for (Object item : itemsRead) {
+                                        if(item instanceof VirtualReality) {
+                                            itemsType.add(item);
+                                        }
+                                    }
+                                    break;
+                            }
+                            for (Object item : itemsType) {
+                                System.out.println(item);
+                            }
+                            scanner.next();
                             break;
                         case 3:
+                            List<SpecialOffer> offers = new ArrayList<SpecialOffer>();
+                            System.out.println("Please choose the criteria");
+                            System.out.println("1. Amount in %");
+                            System.out.println("2. Name");
+                            int amount = scanner.nextInt();
+                            if (amount <1|| amount >2) {
+                                return;
+                            }
+                            if(amount == 1) {
+                                System.out.println("Please enter the amount of the discount");
+                                int discount = scanner.nextInt();
+                                if(discount < 0 || discount > 100) {
+                                    return;
+                                }
+                                for (Object item : itemsRead) {
+                                    if(item instanceof ComputerEquipment) {
+                                        ComputerEquipment computerEquipment = (ComputerEquipment) item;
+                                        if(computerEquipment.getOffers() != null) {
+                                            for(SpecialOffer offer : computerEquipment.getOffers()) {
+                                                if(offer.getAmount() >= discount) {
+                                                    offers.add(offer);
+                                                }
+                                            }
+                                        }
+                                    } else if(item instanceof HouseholdItem) {
+                                        HouseholdItem itemInner = (HouseholdItem) item;
+                                        for(SpecialOffer offer : itemInner.getOffers()) {
+                                            if(offer.getAmount() >= discount) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if(item instanceof KitchenUtensil) {
+                                        KitchenUtensil kitchen = (KitchenUtensil) item;
+                                        for(SpecialOffer offer : kitchen.getOffers()) {
+                                            if(offer.getAmount() >= discount) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if(item instanceof MobileEquipment) {
+                                        MobileEquipment mobile = (MobileEquipment) item;
+                                        for(SpecialOffer offer : mobile.getOffers()) {
+                                            if(offer.getAmount() >= discount) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if(item instanceof MusicEquipment) {
+                                        MusicEquipment music = (MusicEquipment) item;
+                                        for(SpecialOffer offer : music.getOffers()) {
+                                            if(offer.getAmount() >= discount) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if(item instanceof VirtualReality) {
+                                        VirtualReality virtual = (VirtualReality) item;
+                                        for(SpecialOffer offer : virtual.getOffer()) {
+                                            if(offer.getAmount() >= discount) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    }
+                                }
+                                for (Object item : offers   ) {
+                                    System.out.println(item);
+                                }
+                                scanner.next();
+                            } else {
+                                System.out.println("Enter the name of the offer");
+                                String name = scanner.next();
+
+                                for (Object item : itemsRead) {
+                                    if (item instanceof ComputerEquipment) {
+                                        ComputerEquipment computerEquipment = (ComputerEquipment) item;
+                                        if (computerEquipment.getOffers() != null) {
+                                            for (SpecialOffer offer : computerEquipment.getOffers()) {
+                                                if (offer.getName().equals(name)) {
+                                                    offers.add(offer);
+                                                }
+                                            }
+                                        }
+                                    } else if (item instanceof HouseholdItem) {
+                                        HouseholdItem itemInner = (HouseholdItem) item;
+                                        for (SpecialOffer offer : itemInner.getOffers()) {
+                                            if (offer.getName().equals(name)) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if (item instanceof KitchenUtensil) {
+                                        KitchenUtensil kitchen = (KitchenUtensil) item;
+                                        for (SpecialOffer offer : kitchen.getOffers()) {
+                                            if (offer.getName().equals(name)) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if (item instanceof MobileEquipment) {
+                                        MobileEquipment mobile = (MobileEquipment) item;
+                                        for (SpecialOffer offer : mobile.getOffers()) {
+                                            if (offer.getName().equals(name)) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if (item instanceof MusicEquipment) {
+                                        MusicEquipment music = (MusicEquipment) item;
+                                        for (SpecialOffer offer : music.getOffers()) {
+                                            if (offer.getName().equals(name)) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    } else if (item instanceof VirtualReality) {
+                                        VirtualReality virtual = (VirtualReality) item;
+                                        for (SpecialOffer offer : virtual.getOffer()) {
+                                            if (offer.getName().equals(name)) {
+                                                offers.add(offer);
+                                            }
+                                        }
+
+                                    }
+                                }
+                                for (Object item : offers   ) {
+                                    System.out.println(item);
+                                }
+                                scanner.next();
+                            }
                             break;
                     }
                 }

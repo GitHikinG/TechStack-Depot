@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class MobileEquipment  implements Serializable {
 
@@ -19,7 +20,7 @@ public class MobileEquipment  implements Serializable {
     private String name;
     private Type type;
     private Double price;
-    private SpecialOffer offer;
+    private List<SpecialOffer> offers;
     private Color color;
     private Manufacturer manufacturer;
     private double size;
@@ -41,11 +42,11 @@ public class MobileEquipment  implements Serializable {
         this.size = size;
     }
 
-    public MobileEquipment(String name, Type type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, double size) {
+    public MobileEquipment(String name, Type type, Double price, List<SpecialOffer> offers, Color color, Manufacturer manufacturer, double size) {
         this.name = name;
         this.type = type;
         this.price = price;
-        this.offer = offer;
+        this.offers = offers;
         this.color = color;
         this.manufacturer = manufacturer;
         this.size = size;
@@ -75,12 +76,12 @@ public class MobileEquipment  implements Serializable {
         this.price = price;
     }
 
-    public SpecialOffer getOffer() {
-        return offer;
+    public List<SpecialOffer> getOffers() {
+        return offers;
     }
 
-    public void setOffer(SpecialOffer offer) {
-        this.offer = offer;
+    public void setOffers(List<SpecialOffer> offers) {
+        this.offers = offers;
     }
 
     public Color getColor() {
@@ -114,7 +115,7 @@ public class MobileEquipment  implements Serializable {
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", price=" + price +
-                ", offer=" + offer +
+                ", offers=" + offers +
                 ", color=" + color +
                 ", manufacturer=" + manufacturer +
                 ", size=" + size +

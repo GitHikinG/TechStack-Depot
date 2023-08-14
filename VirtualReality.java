@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class VirtualReality implements Serializable {
 
@@ -19,12 +20,12 @@ public class VirtualReality implements Serializable {
     private String name;
     private TypeReality type;
     private Double price;
-    private SpecialOffer offer;
+    private List<SpecialOffer> offer;
     private Color color;
     private Manufacturer manufacturer;
     private String typeOfTechnology;
 
-    public VirtualReality(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
+    public VirtualReality(String name, TypeReality type, Double price, List<SpecialOffer> offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
         this.name = name;
         this.type = type;
         this.price = price;
@@ -59,11 +60,11 @@ public class VirtualReality implements Serializable {
         this.price = price;
     }
 
-    public SpecialOffer getOffer() {
+    public List<SpecialOffer> getOffer() {
         return offer;
     }
 
-    public void setOffer(SpecialOffer offer) {
+    public void setOffer(List<SpecialOffer> offer) {
         this.offer = offer;
     }
 

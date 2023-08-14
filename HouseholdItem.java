@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.List;
 
 public class HouseholdItem implements Serializable {
 
@@ -20,18 +21,18 @@ public class HouseholdItem implements Serializable {
     private String name;
     private TypeHousehold type;
     private Double price;
-    private SpecialOffer offer;
+    private List<SpecialOffer> offers;
     private Color color;
     private Manufacturer manufacturer;
     private int yearOfManufacturing;
     private int ecoLevel;
 
 
-    public HouseholdItem(String name, TypeHousehold type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel) {
+    public HouseholdItem(String name, TypeHousehold type, Double price, List<SpecialOffer> offers, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel) {
         this.name = name;
         this.type = type;
         this.price = price;
-        this.offer = offer;
+        this.offers = offers;
         this.color = color;
         this.manufacturer = manufacturer;
         this.yearOfManufacturing = yearOfManufacturing;
@@ -63,12 +64,12 @@ public class HouseholdItem implements Serializable {
         this.price = price;
     }
 
-    public SpecialOffer getOffer() {
-        return offer;
+    public List<SpecialOffer> getOffers() {
+        return offers;
     }
 
-    public void setOffer(SpecialOffer offer) {
-        this.offer = offer;
+    public void setOffers(List<SpecialOffer> offers) {
+        this.offers = offers;
     }
 
     public Color getColor() {
@@ -110,7 +111,7 @@ public class HouseholdItem implements Serializable {
                 "name='" + name + '\'' +
                 ", type=" + type +
                 ", price=" + price +
-                ", offer=" + offer +
+                ", offers=" + offers +
                 ", color=" + color +
                 ", manufacturer=" + manufacturer +
                 ", yearOfManufacturing=" + yearOfManufacturing +
