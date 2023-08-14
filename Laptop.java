@@ -1,6 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Laptop extends ComputerEquipment {
+public class Laptop extends ComputerEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int ram;
     private int storage;

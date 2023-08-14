@@ -1,4 +1,8 @@
-public class Microphone extends MusicEquipment{
+import java.io.Serializable;
+
+public class Microphone extends MusicEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String operatingPrinciple;
 
@@ -20,10 +24,4 @@ public class Microphone extends MusicEquipment{
         this.operatingPrinciple = operatingPrinciple;
     }
 
-    @Override
-    public String toString() {
-        return "Microphone{" +
-                "operatingPrinciple='" + operatingPrinciple + '\'' +
-                '}';
-    }
 }

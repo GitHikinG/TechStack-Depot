@@ -1,4 +1,9 @@
-public class WashingMachine extends HouseholdItem {
+import java.io.Serializable;
+
+public class WashingMachine extends HouseholdItem implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private int rotations;
 
     public WashingMachine(String name, TypeHousehold type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel, int rotations) {
@@ -15,11 +20,4 @@ public class WashingMachine extends HouseholdItem {
         this.rotations = rotations;
     }
 
-
-    @Override
-    public String toString() {
-        return "WashingMachine{" +
-                "rotations=" + rotations +
-                '}';
-    }
 }

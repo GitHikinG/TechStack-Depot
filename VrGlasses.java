@@ -1,5 +1,8 @@
-public class VrGlasses extends VirtualReality{
+import java.io.Serializable;
 
+public class VrGlasses extends VirtualReality implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public VrGlasses(String name, TypeReality type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, String typeOfTechnology) {
         super(name, type, price, offer, color, manufacturer, typeOfTechnology);
@@ -28,11 +31,4 @@ public class VrGlasses extends VirtualReality{
         this.typeGlasses = typeGlasses;
     }
 
-
-    @Override
-    public String toString() {
-        return "VrGlasses{" +
-                "typeGlasses=" + typeGlasses +
-                '}';
-    }
 }

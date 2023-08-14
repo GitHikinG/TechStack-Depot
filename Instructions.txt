@@ -33,7 +33,7 @@ user
 loginRegistration - static
 dataManipulation - static
 
-
+23/08/2023
 
 Functional stuff
 
@@ -49,7 +49,12 @@ Searching for items
 Logout
 
 
-TypeEquipment, Color, name, type, price, offer, manufacturer, yearsOfWarranty
+Kriterijumi
+raspon cene
+tip proizvoda
+aktivne akcije
+
+TypeEquipment, Color, name, type, price, offer, manufacturer, yearsOfWarranty 
 
 
 

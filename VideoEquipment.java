@@ -1,4 +1,9 @@
-public class VideoEquipment {
+import java.io.Serializable;
+
+public class VideoEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     enum Type {
         MONITOR,
         TV,

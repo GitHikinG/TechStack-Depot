@@ -1,10 +1,28 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataManipulation {
+
     private static String userFileName = "Auth.txt";
     private static String itemsFileName = "Store.txt";
     public static class Writting {
+
+
+       public static void writeItem (Object item) {
+
+           List<Object> items = new ArrayList<Object>();
+           items = Reading.readObjects();
+           items.add(item);
+           try (FileOutputStream fileOutputStream = new FileOutputStream(itemsFileName);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
+
+               objectOutputStream.writeObject(items);
+
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
        public static void writeUser (User user) {
            try {
                File myObj = new File(userFileName);
@@ -27,10 +45,39 @@ public class DataManipulation {
        }
     }
 
+    public static class Delete {
+        public static void deleteItem(int index) {
+            List<Object> items = new ArrayList<Object>();
+            items = Reading.readObjects();
+            items.remove(index);
+            try (FileOutputStream fileOutputStream = new FileOutputStream(itemsFileName);
+                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
 
+                objectOutputStream.writeObject(items);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 
 
     public static class Reading {
+        public static List<Object> readObjects() {
+            List<Object> serializedList = null;
+
+            try (FileInputStream fileInputStream = new FileInputStream(itemsFileName);
+                 ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
+
+                serializedList = (List<Object>) objectInputStream.readObject();
+
+            } catch (Exception e) {
+                return new ArrayList<Object>();
+            }
+
+            return serializedList;
+        }
         public static boolean checkUser(String username, String password) {
             ArrayList<User> users = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new FileReader(userFileName))) {

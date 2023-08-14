@@ -1,4 +1,9 @@
-public class VirtualReality {
+import java.io.Serializable;
+
+public class VirtualReality implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     enum TypeReality {
         GLASSES,
         CONTROLLER,

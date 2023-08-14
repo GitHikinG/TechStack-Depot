@@ -1,4 +1,8 @@
-public class Headphone extends MusicEquipment{
+import java.io.Serializable;
+
+public class Headphone extends MusicEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private boolean wireless;
 

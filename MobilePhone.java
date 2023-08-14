@@ -1,4 +1,8 @@
-public class MobilePhone extends MobileEquipment{
+import java.io.Serializable;
+
+public class MobilePhone extends MobileEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private boolean fastCharging;
 
@@ -23,16 +27,5 @@ public class MobilePhone extends MobileEquipment{
     public void setFastCharging(boolean fastCharging) {
         this.fastCharging = fastCharging;
     }
-
-    @Override
-    public String toString() {
-        return "MobilePhone{" +
-                super.toString() +
-                "fastCharging=" + fastCharging +
-                '}';
-    }
-
-
-
 
 }

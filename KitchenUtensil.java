@@ -1,4 +1,8 @@
-public class KitchenUtensil extends HouseholdItem{
+import java.io.Serializable;
+
+public class KitchenUtensil extends HouseholdItem  implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public KitchenUtensil(String name, TypeHousehold type, Double price, SpecialOffer offer, Color color, Manufacturer manufacturer, int yearOfManufacturing, int ecoLevel) {
         super(name, type, price, offer, color, manufacturer, yearOfManufacturing, ecoLevel);
@@ -20,11 +24,4 @@ public class KitchenUtensil extends HouseholdItem{
         this.weight = weight;
     }
 
-
-    @Override
-    public String toString() {
-        return "KitchenUtensil{" +
-                "weight=" + weight +
-                '}';
-    }
 }

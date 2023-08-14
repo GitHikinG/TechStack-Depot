@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -12,7 +13,10 @@ public class UserInterface {
     public static boolean logedIn = false;
     public static String usernameCurrent = "";
     private static ComputerEquipment computerEquipment;
-
+    private static boolean repeat;
+    public static List<Object> itemsInCart = new ArrayList<Object>();
+    public static List<Object> itemsReturned = new ArrayList<Object>();
+    public static int currentTotal = 0;
     public static void main(String[] args) throws ParseException {
 
 
@@ -25,18 +29,22 @@ public class UserInterface {
                     "    |  |     |   __|  |  |     |   __   |        \\   \\       |  |      /  /_\\  \\  |  |     |    <   \n" +
                     "    |  |     |  |____ |  `----.|  |  |  |    .----)   |      |  |     /  _____  \\ |  `----.|  .  \\  \n" +
                     "    |__|     |_______| \\______||__|  |__|    |_______/       |__|    /__/     \\__\\ \\______||__|\\__\\\n");
+            System.out.println("Current net gain from sales is: " + currentTotal + "EUR" );
             System.out.println("Main menu\n");
             System.out.println("1. Adding items.\n");
             System.out.println("2. Deleting items.\n");
             System.out.println("3. Buying items.\n");
             System.out.println("4. Returning items.\n");
             System.out.println("5. Searching for items.\n");
-            System.out.println("6. Logout\n");
+            System.out.println("6. Sold items\n");
+            System.out.println("7. Returned items\n");
+            System.out.println("8. Logout\n");
 
+            List<Object> items = DataManipulation.Reading.readObjects();
 
             int result = scanner.nextInt();
 
-            if (result < 1 || result > 6) {
+            if (result < 1 || result > 8) {
                 System.out.println("Please enter a correct number corresponding to the menu.");
                 System.out.println("Press anything to continue");
                 scanner.next();
@@ -45,18 +53,115 @@ public class UserInterface {
                 switch (result) {
                     case 1:
                     // Option for adding the item
-                        AddingItem(args);
+                        repeat = Interface.InterfaceImplementation.AddingItem(args);
+
+                        main(args);
+
                         break;
                     case 2:
+                        repeat = Interface.InterfaceImplementation.DeletingItems(args);
+
+                        main(args);
+
                         break;
                     case 3:
+                        System.out.println("Current total net gain is " + currentTotal + " EUR");
+                        Object item = Interface.InterfaceImplementation.BuyingItems(args);
+                        if(item instanceof Boolean && !(Boolean) item) {
+                        main(args);
+                        } else {
+                            if(item instanceof ComputerEquipment) {
+                                itemsInCart.add(item);
+                                currentTotal += ((ComputerEquipment) item).getPrice();
+                            } else if(item instanceof HouseholdItem) {
+                                itemsInCart.add(item);
+                                currentTotal += ((HouseholdItem) item).getPrice();
+                            } else if(item instanceof KitchenUtensil) {
+                                itemsInCart.add(item);
+                                currentTotal += ((KitchenUtensil) item).getPrice();
+                            } else if(item instanceof MobileEquipment) {
+                                itemsInCart.add(item);
+                                currentTotal += ((MobileEquipment) item).getPrice();
+                            } else if(item instanceof MusicEquipment) {
+                                itemsInCart.add(item);
+                                currentTotal += ((MusicEquipment) item).getPrice();
+                            } else if (item instanceof VideoEquipment) {
+                                itemsInCart.add(item);
+                                currentTotal += ((VideoEquipment) item).getPrice();
+                            } else if (item instanceof VirtualReality) {
+                                itemsInCart.add(item);
+                                currentTotal += ((VirtualReality) item).getPrice();
+                            }
+                        }
+                        main(args);
                         break;
                     case 4:
+
+                        System.out.println("Please enter the number of the item you want to return.\n");
+
+
+
+                        items = itemsInCart;
+                        int index = 0;
+                        for (Object itemCurrent : items) {
+                            System.out.println(String.valueOf(index + 1) + ". " + itemCurrent);
+                            index += 1;
+                        }
+
+                        int toRemove = scanner.nextInt();
+                        itemsReturned.add(itemsInCart.get(toRemove - 1));
+                        List<Object> removed = Interface.InterfaceImplementation.ReturningItems(itemsInCart ,args, toRemove);
+                        currentTotal = 0;
+                        for (Object remove : removed) {
+                            if(remove instanceof ComputerEquipment) {
+
+                                currentTotal += ((ComputerEquipment) remove).getPrice();
+                            } else if(remove instanceof HouseholdItem) {
+
+                                currentTotal += ((HouseholdItem) remove).getPrice();
+                            } else if(remove instanceof KitchenUtensil) {
+
+                                currentTotal += ((KitchenUtensil) remove).getPrice();
+                            } else if(remove instanceof MobileEquipment) {
+
+                                currentTotal += ((MobileEquipment) remove).getPrice();
+                            } else if(remove instanceof MusicEquipment) {
+
+                                currentTotal += ((MusicEquipment) remove).getPrice();
+                            } else if (remove instanceof VideoEquipment) {
+
+                                currentTotal += ((VideoEquipment) remove).getPrice();
+                            } else if (remove instanceof VirtualReality) {
+
+                                currentTotal += ((VirtualReality) remove).getPrice();
+                            }
+                        }
+                        main(args);
                         break;
                     case 5:
+                        Interface.InterfaceImplementation.Sort();
+                        main(args);
                         break;
                     case 6:
+
+                        int indexSold = 0;
+                        for (Object itemCurrent : itemsInCart) {
+                            System.out.println(String.valueOf(indexSold + 1) + ". " + itemCurrent);
+                            indexSold += 1;
+                        }
+                        scanner.next();
+
+                        main(args);
                         break;
+                        case 7:
+                            int indexReturned = 0;
+                            for (Object itemCurrent : itemsReturned) {
+                                System.out.println(String.valueOf(indexReturned + 1) + ". " + itemCurrent);
+                                indexReturned += 1;
+                            }
+                            scanner.next();
+                            main(args);
+                            break;
 
                 }
                 scanner.next();
@@ -105,197 +210,7 @@ public class UserInterface {
 
     }
 
-    public static void AddingItem(String args[]) throws ParseException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What kind of item do you want to add?\n");
 
-
-        System.out.println("1. Computer equipment\n");
-        System.out.println("2. Household item\n");
-        System.out.println("3. Kitchen utensil\n");
-        System.out.println("4. Mobile equipment\n");
-        System.out.println("5. Video equipment\n");
-        System.out.println("6. Virtual reality\n");
-
-        int answer = scanner.nextInt();
-
-        if(answer > 6 || answer < 1) {
-            main(args);
-        } else {
-            switch (answer) {
-                case 1:
-                    computerEquipment = new ComputerEquipment();
-                    System.out.println("Fill out the name of the item\n");
-                    computerEquipment.setName(scanner.nextLine());
-                    System.out.println("Choose the color:\n");
-                    System.out.println("1. Yellow\n");
-                    System.out.println("2. Blue\n");
-                    System.out.println("3. Green\n");
-                    System.out.println("4. Gray\n");
-                    System.out.println("5. Black\n");
-                    System.out.println("6. White\n");
-                    int color = scanner.nextInt();
-                    if(color>6||color<1) {
-                        main(args);
-                    } else {
-                        if(color == 1) {
-                            computerEquipment.setColor(ComputerEquipment.Color.YELLOW);
-                        } else if (color == 2) {
-                            computerEquipment.setColor(ComputerEquipment.Color.BLUE);
-                        } else if( color == 3) {
-                            computerEquipment.setColor(ComputerEquipment.Color.GREEN);
-                        } else if (color == 4) {
-                            computerEquipment.setColor(ComputerEquipment.Color.GRAY);
-                        } else if (color == 5) {
-                            computerEquipment.setColor(ComputerEquipment.Color.BLACK);
-                        } else if (color == 6) {
-                            computerEquipment.setColor(ComputerEquipment.Color.WHITE);
-                        }
-                     }
-                    System.out.println("Is the item laptop or an individual component?\n");
-                    System.out.println("1. Laptop\n");
-                    System.out.println("2. Component\n");
-
-
-                    int type = scanner.nextInt();
-                    if(type > 2 || type < 1) {
-
-                        main(args);
-                    }
-
-                    if (type == 1) {
-                        computerEquipment.setType(ComputerEquipment.TypeEquipment.LAPTOP);
-                    } else {
-                        computerEquipment.setType(ComputerEquipment.TypeEquipment.COMPONENT);
-
-                    }
-                    System.out.println("Please enter the price of the item.");
-                    double price = scanner.nextDouble();
-
-                    computerEquipment.setPrice(price);
-
-                    System.out.println("How many years of warranty does the item provide?");
-                    int warranty = scanner.nextInt();
-
-                    computerEquipment.setYearsOfWarranty(warranty);
-
-                    System.out.println("Do you want to enter some special offers?");
-                    System.out.println("1. Yes");
-                    System.out.println("2. No");
-
-                    int offer = scanner.nextInt();
-
-
-                    ArrayList<SpecialOffer> offers = new ArrayList<>();
-                    if(offer == 1) {
-
-                        while(true) {
-
-                            scanner.nextLine();
-
-                            System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
-                            String start = scanner.nextLine();
-
-
-                            System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
-                            String end = scanner.nextLine();
-
-                            System.out.println("Enter the name of the special offer?\n");
-                            String name = scanner.nextLine();
-                            System.out.println("Please enter the amount of discount in %?\n");
-                            Double discount = scanner.nextDouble();
-                            Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
-                            Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
-                            SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
-                            offers.add(offerCurrent);
-                            System.out.println("If you want to continue press 1, otherwise anything else.\n");
-                            int continueAnswer = scanner.nextInt();
-                            try {
-                                if (continueAnswer == 1) {
-                                    continue;
-                                } else {
-                                    break;
-                                }
-                            } catch(Exception ee) {
-                                break;
-                            }
-
-                        }
-                    }
-                    computerEquipment.setOffers(offers);
-                    System.out.println("Please enter the name of the manufacturer\n");
-                    String manufacturerName = scanner.nextLine();
-                    System.out.println("Please enter the country of the manufacturer\n");
-                    String country = scanner.nextLine();
-                    System.out.println("Please enter the legal status of the manufacturer\n");
-                    String status = scanner.nextLine();
-                    Manufacturer manufacturer = new Manufacturer(manufacturerName, country, status);
-                    computerEquipment.setManufacturer(manufacturer);
-
-                    if(computerEquipment.getType() == ComputerEquipment.TypeEquipment.COMPONENT) {
-                        Component component = new Component();
-                        System.out.println("Please enter the type of the component\n");
-                        System.out.println("1. SSD\n");
-                        System.out.println("2. VIDEOCARD\n");
-                        System.out.println("3. RAM\n");
-                        System.out.println("4. COOLING\n");
-
-                        int typeResult= scanner.nextInt();
-
-                        if(typeResult > 4 || typeResult < 1) {
-                            main(args);
-                        } else if (typeResult == 1) {
-                            component.setType(Component.Type.SSD);
-                        } else if (typeResult == 2) {
-                            component.setType(Component.Type.VIDEOCARD);
-                        } else if (typeResult == 3) {
-                            component.setType(Component.Type.RAM);
-                        } else if (typeResult == 4) {
-                            component.setType(Component.Type.COOLING);
-                        }
-
-                        component.setName(computerEquipment.getName());
-                        component.setColor(computerEquipment.getColor());
-                        component.setPrice(computerEquipment.getPrice());
-                        component.setYearsOfWarranty(computerEquipment.getYearsOfWarranty());
-                        component.setOffers(computerEquipment.getOffers());
-                        component.setManufacturer(computerEquipment.getManufacturer());
-                        component.setType(computerEquipment.getType());
-
-                    } else {
-                        Laptop component = new Laptop();
-                        System.out.println("Please enter the amount of ram\n");
-                        int ram = scanner.nextInt();
-
-                        System.out.println("Please enter the amount of storage\n");
-                        int storage = scanner.nextInt();
-
-                        component.setName(computerEquipment.getName());
-                        component.setColor(computerEquipment.getColor());
-                        component.setPrice(computerEquipment.getPrice());
-                        component.setYearsOfWarranty(computerEquipment.getYearsOfWarranty());
-                        component.setOffers(computerEquipment.getOffers());
-                        component.setManufacturer(computerEquipment.getManufacturer());
-                        component.setType(computerEquipment.getType());
-                        component.setRam(ram);
-                        component.setStorage(storage);
-                    }
-
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-
-            }
-        }
-    }
 
     private static boolean CheckUser(String username, String password) {
 

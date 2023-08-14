@@ -38,10 +38,5 @@ public class Component extends ComputerEquipment implements Serializable {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Component{" +
-                "type=" + type +
-                '}';
-    }
+
 }

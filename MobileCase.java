@@ -1,4 +1,8 @@
-public class MobileCase extends MobileEquipment{
+import java.io.Serializable;
+
+public class MobileCase extends MobileEquipment implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String logo;
 
@@ -19,10 +23,4 @@ public class MobileCase extends MobileEquipment{
         this.logo = logo;
     }
 
-    @Override
-    public String toString() {
-        return "MobileCase{" +
-                "logo='" + logo + '\'' +
-                '}';
-    }
 }

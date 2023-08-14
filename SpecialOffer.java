@@ -1,6 +1,9 @@
+import java.io.Serializable;
 import java.util.Date;
 
-public class SpecialOffer {
+public class SpecialOffer implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Date startDate;
     private Date endDate;

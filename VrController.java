@@ -1,4 +1,8 @@
-public class VrController extends VirtualReality{
+import java.io.Serializable;
+
+public class VrController extends VirtualReality implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int numberOfButtons;
 
@@ -16,10 +20,4 @@ public class VrController extends VirtualReality{
         this.numberOfButtons = numberOfButtons;
     }
 
-    @Override
-    public String toString() {
-        return "VrController{" +
-                "numberOfButtons=" + numberOfButtons +
-                '}';
-    }
 }
