@@ -16,6 +16,10 @@ public class KitchenUtensil extends HouseholdItem  implements Serializable {
         this.weight = weight;
     }
 
+    public KitchenUtensil() {
+        super();
+    }
+
 
     public double getWeight() {
         return weight;

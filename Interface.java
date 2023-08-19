@@ -8,6 +8,11 @@ import java.util.Scanner;
 public class Interface {
     public static class InterfaceImplementation {
         private static ComputerEquipment computerEquipment;
+        private static HouseholdItem householdItem;
+        private static KitchenUtensil kitchenUtensil;
+        private static MusicEquipment musicEquipment;
+        private static MobileEquipment mobileEquipment;
+        private static VideoEquipment videoEquipment;
 
         public static boolean AddingItem(String args[]) throws ParseException {
             Scanner scanner = new Scanner(System.in);
@@ -16,7 +21,7 @@ public class Interface {
 
             System.out.println("1. Computer equipment\n");
             System.out.println("2. Household item\n");
-            System.out.println("3. Kitchen utensil\n");
+            System.out.println("3. Music equipment\n");
             System.out.println("4. Mobile equipment\n");
             System.out.println("5. Video equipment\n");
             System.out.println("6. Virtual reality\n");
@@ -189,12 +194,540 @@ public class Interface {
 
                         break;
                     case 2:
+                        householdItem = new HouseholdItem();
+                        System.out.println("Fill out the name of the item\n");
+                        householdItem.setName(scanner.nextLine());
+                        System.out.println("Choose the color:\n");
+                        System.out.println("1. Yellow\n");
+                        System.out.println("2. Blue\n");
+                        System.out.println("3. Green\n");
+                        System.out.println("4. Gray\n");
+                        System.out.println("5. Black\n");
+                        System.out.println("6. White\n");
+                        color = scanner.nextInt();
+                        if(color>6||color<1) {
+                            return false;
+                        } else {
+                            if(color == 1) {
+                                householdItem.setColor(HouseholdItem.Color.YELLOW);
+                            } else if (color == 2) {
+                                householdItem.setColor(HouseholdItem.Color.BLUE);
+                            } else if( color == 3) {
+                                householdItem.setColor(HouseholdItem.Color.GREEN);
+                            } else if (color == 4) {
+                                householdItem.setColor(HouseholdItem.Color.GRAY);
+                            } else if (color == 5) {
+                                householdItem.setColor(HouseholdItem.Color.BLACK);
+                            } else if (color == 6) {
+                                householdItem.setColor(HouseholdItem.Color.WHITE);
+                            }
+                        }
+                        System.out.println("Is the item laptop or an individual component?\n");
+                        System.out.println("1. Washing\n");
+                        System.out.println("2. Utensil\n");
+
+
+                        type = scanner.nextInt();
+                        if(type > 2 || type < 1) {
+
+                            return false;
+                        }
+
+                        if (type == 1) {
+                            householdItem.setType(HouseholdItem.TypeHousehold.WASHING);
+                        } else {
+                            householdItem.setType(HouseholdItem.TypeHousehold.UTENSIL);
+                        }
+
+                        System.out.println("Please enter the price of the item.");
+                        price = scanner.nextDouble();
+
+                        householdItem.setPrice(price);
+
+                        System.out.println("What is the ecc level?");
+                        int eco = scanner.nextInt();
+
+                        householdItem.setEcoLevel(eco);
+
+                        System.out.println("Do you want to enter some special offers?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        offer = scanner.nextInt();
+
+
+                        offers = new ArrayList<>();
+                        if(offer == 1) {
+
+                            while(true) {
+
+                                scanner.nextLine();
+
+                                System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
+                                String start = scanner.nextLine();
+
+
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                String end = scanner.nextLine();
+
+                                System.out.println("Enter the name of the special offer?\n");
+                                String name = scanner.nextLine();
+                                System.out.println("Please enter the amount of discount in %?\n");
+                                Double discount = scanner.nextDouble();
+                                Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
+                                Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
+                                SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
+                                offers.add(offerCurrent);
+                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                int continueAnswer = scanner.nextInt();
+                                try {
+                                    if (continueAnswer == 1) {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch(Exception ee) {
+                                    break;
+                                }
+
+                            }
+                        }
+                        householdItem.setOffers(offers);
+                        System.out.println("Please enter the name of the manufacturer\n");
+                        manufacturerName = scanner.nextLine();
+                        System.out.println("Please enter the country of the manufacturer\n");
+                        country = scanner.nextLine();
+                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        status = scanner.nextLine();
+                        manufacturer = new Manufacturer(manufacturerName, country, status);
+                        householdItem.setManufacturer(manufacturer);
+
+                        if(householdItem.getType() == HouseholdItem.TypeHousehold.UTENSIL) {
+                            KitchenUtensil component = new KitchenUtensil();
+                            System.out.print("Enter the weight of the object");
+                            component.setWeight(scanner.nextDouble());
+                            component.setName(householdItem.getName());
+                            component.setColor(householdItem.getColor());
+                            component.setPrice(householdItem.getPrice());
+                            component.setOffers(householdItem.getOffers());
+                            component.setManufacturer(computerEquipment.getManufacturer());
+                            component.setType(householdItem.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        } else {
+                            WashingMachine component = new WashingMachine();
+                            System.out.print("Enter the weight of the object");
+                            component.setRotations(scanner.nextInt());
+                            component.setName(householdItem.getName());
+                            component.setColor(householdItem.getColor());
+                            component.setPrice(householdItem.getPrice());
+                            component.setOffers(householdItem.getOffers());
+                            component.setManufacturer(computerEquipment.getManufacturer());
+                            component.setType(householdItem.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        }
                         break;
                     case 3:
+                        musicEquipment = new MusicEquipment();
+                        System.out.println("Fill out the name of the item\n");
+                        musicEquipment.setName(scanner.nextLine());
+                        System.out.println("Choose the color:\n");
+                        System.out.println("1. Yellow\n");
+                        System.out.println("2. Blue\n");
+                        System.out.println("3. Green\n");
+                        System.out.println("4. Gray\n");
+                        System.out.println("5. Black\n");
+                        System.out.println("6. White\n");
+                        color = scanner.nextInt();
+                        if(color>6||color<1) {
+                            return false;
+                        } else {
+                            if(color == 1) {
+                                musicEquipment.setColor(MusicEquipment.Color.YELLOW);
+                            } else if (color == 2) {
+                                musicEquipment.setColor(MusicEquipment.Color.BLUE);
+                            } else if( color == 3) {
+                                musicEquipment.setColor(MusicEquipment.Color.GREEN);
+                            } else if (color == 4) {
+                                musicEquipment.setColor(MusicEquipment.Color.GRAY);
+                            } else if (color == 5) {
+                                musicEquipment.setColor(MusicEquipment.Color.BLACK);
+                            } else if (color == 6) {
+                                musicEquipment.setColor(MusicEquipment.Color.WHITE);
+                            }
+                        }
+                        System.out.println("Is the item headphone or a microphone?\n");
+                        System.out.println("1. Headphone\n");
+                        System.out.println("2. Microphone\n");
+
+
+                        type = scanner.nextInt();
+                        if(type > 2 || type < 1) {
+
+                            return false;
+                        }
+
+                        if (type == 1) {
+                            musicEquipment.setType(MusicEquipment.Type.HEADPHONE);
+                        } else {
+                            musicEquipment.setType(MusicEquipment.Type.MICROPHONE);
+                        }
+
+                        System.out.println("Please enter the price of the item.");
+                        price = scanner.nextDouble();
+
+                        musicEquipment.setPrice(price);
+
+                        System.out.print("What is the strenght?");
+                        String strength = scanner.nextLine();
+
+                        musicEquipment.setStrength(strength);
+
+                        System.out.println("Do you want to enter some special offers?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        offer = scanner.nextInt();
+
+
+                        offers = new ArrayList<>();
+                        if(offer == 1) {
+
+                            while(true) {
+
+                                scanner.nextLine();
+
+                                System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
+                                String start = scanner.nextLine();
+
+
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                String end = scanner.nextLine();
+
+                                System.out.println("Enter the name of the special offer?\n");
+                                String name = scanner.nextLine();
+                                System.out.println("Please enter the amount of discount in %?\n");
+                                Double discount = scanner.nextDouble();
+                                Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
+                                Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
+                                SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
+                                offers.add(offerCurrent);
+                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                int continueAnswer = scanner.nextInt();
+                                try {
+                                    if (continueAnswer == 1) {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch(Exception ee) {
+                                    break;
+                                }
+
+                            }
+                        }
+                        musicEquipment.setOffers(offers);
+                        System.out.println("Please enter the name of the manufacturer\n");
+                        manufacturerName = scanner.nextLine();
+                        System.out.println("Please enter the country of the manufacturer\n");
+                        country = scanner.nextLine();
+                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        status = scanner.nextLine();
+                        manufacturer = new Manufacturer(manufacturerName, country, status);
+                        musicEquipment.setManufacturer(manufacturer);
+
+                        if(musicEquipment.getType() == MusicEquipment.Type.HEADPHONE) {
+                            Headphone component = new Headphone();
+                            System.out.print("Is the component wireless?");
+                            component.setWireless(scanner.nextBoolean());
+                            component.setName(musicEquipment.getName());
+                            component.setColor(musicEquipment.getColor());
+                            component.setPrice(musicEquipment.getPrice());
+                            component.setOffers(musicEquipment.getOffers());
+                            component.setManufacturer(musicEquipment.getManufacturer());
+                            component.setType(musicEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        } else {
+                            Microphone component = new Microphone();
+                            System.out.print("Enter the weight of the object");
+                            component.setOperatingPrinciple(scanner.nextLine());
+                            component.setName(musicEquipment.getName());
+                            component.setColor(musicEquipment.getColor());
+                            component.setPrice(musicEquipment.getPrice());
+                            component.setOffers(musicEquipment.getOffers());
+                            component.setManufacturer(musicEquipment.getManufacturer());
+                            component.setType(musicEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        }
                         break;
                     case 4:
+                        mobileEquipment = new MobileEquipment();
+                        System.out.println("Fill out the name of the item\n");
+                        mobileEquipment.setName(scanner.nextLine());
+                        System.out.println("Choose the color:\n");
+                        System.out.println("1. Yellow\n");
+                        System.out.println("2. Blue\n");
+                        System.out.println("3. Green\n");
+                        System.out.println("4. Gray\n");
+                        System.out.println("5. Black\n");
+                        System.out.println("6. White\n");
+                        color = scanner.nextInt();
+                        if(color>6||color<1) {
+                            return false;
+                        } else {
+                            if(color == 1) {
+                                mobileEquipment.setColor(MobileEquipment.Color.YELLOW);
+                            } else if (color == 2) {
+                                mobileEquipment.setColor(MobileEquipment.Color.BLUE);
+                            } else if( color == 3) {
+                                mobileEquipment.setColor(MobileEquipment.Color.GREEN);
+                            } else if (color == 4) {
+                                mobileEquipment.setColor(MobileEquipment.Color.GRAY);
+                            } else if (color == 5) {
+                                mobileEquipment.setColor(MobileEquipment.Color.BLACK);
+                            } else if (color == 6) {
+                                mobileEquipment.setColor(MobileEquipment.Color.WHITE);
+                            }
+                        }
+                        System.out.println("Is the item phone or a case?\n");
+                        System.out.println("1. Phone\n");
+                        System.out.println("2. Case\n");
+
+
+                        type = scanner.nextInt();
+                        if(type > 2 || type < 1) {
+
+                            return false;
+                        }
+
+                        if (type == 1) {
+                            mobileEquipment.setType(MobileEquipment.Type.PHONE);
+                        } else {
+                            mobileEquipment.setType(MobileEquipment.Type.CASE);
+                        }
+
+                        System.out.println("Please enter the price of the item.");
+                        price = scanner.nextDouble();
+
+                        mobileEquipment.setPrice(price);
+
+                        System.out.print("What is the size?");
+                        double size = scanner.nextDouble();
+
+                        mobileEquipment.setSize(size);
+
+                        System.out.println("Do you want to enter some special offers?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        offer = scanner.nextInt();
+
+
+                        offers = new ArrayList<>();
+                        if(offer == 1) {
+
+                            while(true) {
+
+                                scanner.nextLine();
+
+                                System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
+                                String start = scanner.nextLine();
+
+
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                String end = scanner.nextLine();
+
+                                System.out.println("Enter the name of the special offer?\n");
+                                String name = scanner.nextLine();
+                                System.out.println("Please enter the amount of discount in %?\n");
+                                Double discount = scanner.nextDouble();
+                                Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
+                                Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
+                                SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
+                                offers.add(offerCurrent);
+                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                int continueAnswer = scanner.nextInt();
+                                try {
+                                    if (continueAnswer == 1) {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch(Exception ee) {
+                                    break;
+                                }
+
+                            }
+                        }
+                        mobileEquipment.setOffers(offers);
+                        System.out.println("Please enter the name of the manufacturer\n");
+                        manufacturerName = scanner.nextLine();
+                        System.out.println("Please enter the country of the manufacturer\n");
+                        country = scanner.nextLine();
+                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        status = scanner.nextLine();
+                        manufacturer = new Manufacturer(manufacturerName, country, status);
+                        mobileEquipment.setManufacturer(manufacturer);
+
+                        if(mobileEquipment.getType() == MobileEquipment.Type.PHONE) {
+                            MobilePhone component = new MobilePhone();
+                            System.out.print("Does the phone have the fast charging?");
+                            component.setFastCharging(scanner.nextBoolean());
+                            component.setName(mobileEquipment.getName());
+                            component.setColor(mobileEquipment.getColor());
+                            component.setPrice(mobileEquipment.getPrice());
+                            component.setOffers(mobileEquipment.getOffers());
+                            component.setManufacturer(mobileEquipment.getManufacturer());
+                            component.setType(mobileEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        } else {
+                            MobileCase component = new MobileCase();
+                            System.out.print("Enter the logo.");
+                            component.setLogo(scanner.nextLine());
+                            component.setName(mobileEquipment.getName());
+                            component.setColor(mobileEquipment.getColor());
+                            component.setPrice(mobileEquipment.getPrice());
+                            component.setOffers(mobileEquipment.getOffers());
+                            component.setManufacturer(mobileEquipment.getManufacturer());
+                            component.setType(mobileEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        }
                         break;
                     case 5:
+                        videoEquipment = new VideoEquipment();
+                        System.out.println("Fill out the name of the item\n");
+                        mobileEquipment.setName(scanner.nextLine());
+                        System.out.println("Choose the color:\n");
+                        System.out.println("1. Yellow\n");
+                        System.out.println("2. Blue\n");
+                        System.out.println("3. Green\n");
+                        System.out.println("4. Gray\n");
+                        System.out.println("5. Black\n");
+                        System.out.println("6. White\n");
+                        color = scanner.nextInt();
+                        if(color>6||color<1) {
+                            return false;
+                        } else {
+                            if(color == 1) {
+                                videoEquipment.setColor(VideoEquipment.Color.YELLOW);
+                            } else if (color == 2) {
+                                videoEquipment.setColor(VideoEquipment.Color.BLUE);
+                            } else if( color == 3) {
+                                videoEquipment.setColor(VideoEquipment.Color.GREEN);
+                            } else if (color == 4) {
+                                videoEquipment.setColor(VideoEquipment.Color.GRAY);
+                            } else if (color == 5) {
+                                videoEquipment.setColor(VideoEquipment.Color.BLACK);
+                            } else if (color == 6) {
+                                videoEquipment.setColor(VideoEquipment.Color.WHITE);
+                            }
+                        }
+                        System.out.println("Is the item monitor or a TV?\n");
+                        System.out.println("1. Monitor\n");
+                        System.out.println("2. TV\n");
+
+
+                        type = scanner.nextInt();
+                        if(type > 2 || type < 1) {
+
+                            return false;
+                        }
+
+                        if (type == 1) {
+                            videoEquipment.setType(VideoEquipment.Type.MONITOR);
+                        } else {
+                            videoEquipment.setType(VideoEquipment.Type.TV);
+                        }
+
+                        System.out.println("Please enter the price of the item.");
+                        price = scanner.nextDouble();
+
+                        videoEquipment.setPrice(price);
+
+                        System.out.print("What is the diameter?");
+                        double diameter = scanner.nextDouble();
+
+                        System.out.print("What is the resolution?");
+                        String resolution = scanner.nextLine();
+
+                        videoEquipment.setDiameter(diameter);
+                        videoEquipment.setResolution(resolution);
+
+                        System.out.println("Do you want to enter some special offers?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        offer = scanner.nextInt();
+
+
+                        offers = new ArrayList<>();
+                        if(offer == 1) {
+
+                            while(true) {
+
+                                scanner.nextLine();
+
+                                System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
+                                String start = scanner.nextLine();
+
+
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                String end = scanner.nextLine();
+
+                                System.out.println("Enter the name of the special offer?\n");
+                                String name = scanner.nextLine();
+                                System.out.println("Please enter the amount of discount in %?\n");
+                                Double discount = scanner.nextDouble();
+                                Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
+                                Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
+                                SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
+                                offers.add(offerCurrent);
+                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                int continueAnswer = scanner.nextInt();
+                                try {
+                                    if (continueAnswer == 1) {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch(Exception ee) {
+                                    break;
+                                }
+
+                            }
+                        }
+                        videoEquipment.setOffers(offers);
+                        System.out.println("Please enter the name of the manufacturer\n");
+                        manufacturerName = scanner.nextLine();
+                        System.out.println("Please enter the country of the manufacturer\n");
+                        country = scanner.nextLine();
+                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        status = scanner.nextLine();
+                        manufacturer = new Manufacturer(manufacturerName, country, status);
+                        videoEquipment.setManufacturer(manufacturer);
+
+                        if(videoEquipment.getType() == VideoEquipment.Type.MONITOR) {
+                            Monitor component = new Monitor();
+                            System.out.print("Does the phone have the fast charging?");
+                            component.setFastCharging(scanner.nextBoolean());
+                            component.setName(videoEquipment.getName());
+                            component.setColor(videoEquipment.getColor());
+                            component.setPrice(videoEquipment.getPrice());
+                            component.setOffers(videoEquipment.getOffers());
+                            component.setManufacturer(videoEquipment.getManufacturer());
+                            component.setType(videoEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        } else {
+                            MobileCase component = new MobileCase();
+                            System.out.print("Enter the logo.");
+                            component.setLogo(scanner.nextLine());
+                            component.setName(videoEquipment.getName());
+                            component.setColor(videoEquipment.getColor());
+                            component.setPrice(videoEquipment.getPrice());
+                            component.setOffers(videoEquipment.getOffers());
+                            component.setManufacturer(videoEquipment.getManufacturer());
+                            component.setType(videoEquipment.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        }
                         break;
                     case 6:
                         break;

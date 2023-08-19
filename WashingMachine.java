@@ -12,6 +12,10 @@ public class WashingMachine extends HouseholdItem implements Serializable {
         this.rotations = rotations;
     }
 
+    public WashingMachine() {
+        super();
+    }
+
 
     public int getRotations() {
         return rotations;

@@ -16,6 +16,10 @@ public class Microphone extends MusicEquipment implements Serializable {
         this.operatingPrinciple = operatingPrinciple;
     }
 
+    public Microphone() {
+
+    }
+
 
     public String getOperatingPrinciple() {
         return operatingPrinciple;

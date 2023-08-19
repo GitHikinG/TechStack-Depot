@@ -18,6 +18,10 @@ public class Headphone extends MusicEquipment implements Serializable {
         this.wireless = wireless;
     }
 
+    public Headphone() {
+
+    }
+
     public boolean isWireless() {
         return wireless;
     }

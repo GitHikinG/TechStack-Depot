@@ -34,6 +34,7 @@ loginRegistration - static
 dataManipulation - static
 
 23/08/2023
+30/08/2023
 
 Functional stuff
 
@@ -56,6 +57,27 @@ aktivne akcije
 
 TypeEquipment, Color, name, type, price, offer, manufacturer, yearsOfWarranty 
 
+
+
+
+narisiHistogram
+ima parametre listu stevil katera prikazejo visino histograma na tem mestu
+
+
+primer:
+narisiHistogram(1, 1,2 3, 5)
+
+
+rezultatL
+
+     
+     
+    
+    *
+    *
+   **
+  ***
+*****
 
 
 

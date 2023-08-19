@@ -16,6 +16,10 @@ public class MobileCase extends MobileEquipment implements Serializable {
         this.logo = logo;
     }
 
+    public MobileCase() {
+
+    }
+
     public String getLogo() {
         return logo;
     }

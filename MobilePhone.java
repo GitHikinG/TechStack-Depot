@@ -21,6 +21,10 @@ public class MobilePhone extends MobileEquipment implements Serializable {
         this.fastCharging = fastCharging;
     }
 
+    public MobilePhone() {
+
+    }
+
     public boolean isFastCharging() {
         return fastCharging;
     }
