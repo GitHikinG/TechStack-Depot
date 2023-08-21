@@ -9,6 +9,10 @@ public class VrGlasses extends VirtualReality implements Serializable {
         super(name, type, price, offer, color, manufacturer, typeOfTechnology);
     }
 
+    public VrGlasses() {
+
+    }
+
     enum TypeGlasses {
         NONIMMERSIVE,
         SEMIIMMERSIVE,

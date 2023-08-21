@@ -30,15 +30,15 @@ public class UserInterface {
                     "    |  |     |  |____ |  `----.|  |  |  |    .----)   |      |  |     /  _____  \\ |  `----.|  .  \\  \n" +
                     "    |__|     |_______| \\______||__|  |__|    |_______/       |__|    /__/     \\__\\ \\______||__|\\__\\\n");
             System.out.println("Current net gain from sales is: " + currentTotal + "EUR" );
-            System.out.println("Main menu\n");
-            System.out.println("1. Adding items.\n");
-            System.out.println("2. Deleting items.\n");
-            System.out.println("3. Buying items.\n");
-            System.out.println("4. Returning items.\n");
-            System.out.println("5. Searching for items.\n");
-            System.out.println("6. Sold items\n");
-            System.out.println("7. Returned items\n");
-            System.out.println("8. Logout\n");
+            System.out.println("Main menu");
+            System.out.println("1. Adding items.");
+            System.out.println("2. Deleting items.");
+            System.out.println("3. Buying items.");
+            System.out.println("4. Returning items.");
+            System.out.println("5. Searching for items.");
+            System.out.println("6. Sold items");
+            System.out.println("7. Returned items");
+            System.out.println("8. Logout");
 
             List<Object> items = DataManipulation.Reading.readObjects();
 
@@ -162,6 +162,11 @@ public class UserInterface {
                             scanner.next();
                             main(args);
                             break;
+                    case 8:
+                        logedIn = false;
+                        usernameCurrent = "";
+                        main(args);
+                        break;
 
                 }
                 scanner.next();
@@ -173,7 +178,7 @@ public class UserInterface {
             System.out.println("Please enter your username\n");
             Scanner scanner = new Scanner(System.in);
             String username = scanner.nextLine();
-            System.out.println("Don't have an account? Press number 1.\n");
+            System.out.println("Don't have an account? Press number 1 for registration, anything else for password.\n");
             String registerOption = scanner.nextLine();
             if(!registerOption.equals("1")) {
                 System.out.println("Thank you, please enter the password\n");

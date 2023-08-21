@@ -5,6 +5,10 @@ public class VirtualReality implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public VirtualReality() {
+
+    }
+
     enum TypeReality {
         GLASSES,
         CONTROLLER,

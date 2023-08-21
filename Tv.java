@@ -14,6 +14,10 @@ public class Tv extends VideoEquipment implements Serializable {
         this.typeTv = typeTv;
     }
 
+    public Tv() {
+
+    }
+
     public String getTypeTv() {
         return typeTv;
     }

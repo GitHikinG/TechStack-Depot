@@ -13,6 +13,7 @@ public class Interface {
         private static MusicEquipment musicEquipment;
         private static MobileEquipment mobileEquipment;
         private static VideoEquipment videoEquipment;
+        private static VirtualReality virtualReality;
 
         public static boolean AddingItem(String args[]) throws ParseException {
             Scanner scanner = new Scanner(System.in);
@@ -25,6 +26,8 @@ public class Interface {
             System.out.println("4. Mobile equipment\n");
             System.out.println("5. Video equipment\n");
             System.out.println("6. Virtual reality\n");
+            System.out.println("404. Main menu");
+
 
             int answer = scanner.nextInt();
 
@@ -35,6 +38,7 @@ public class Interface {
                     case 1:
                         computerEquipment = new ComputerEquipment();
                         System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
                         computerEquipment.setName(scanner.nextLine());
                         System.out.println("Choose the color:\n");
                         System.out.println("1. Yellow\n");
@@ -132,7 +136,8 @@ public class Interface {
                             }
                         }
                         computerEquipment.setOffers(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.print("Please enter the name of the manufacturer\n");
+                        scanner.nextLine();
                         String manufacturerName = scanner.nextLine();
                         System.out.println("Please enter the country of the manufacturer\n");
                         String country = scanner.nextLine();
@@ -196,6 +201,7 @@ public class Interface {
                     case 2:
                         householdItem = new HouseholdItem();
                         System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
                         householdItem.setName(scanner.nextLine());
                         System.out.println("Choose the color:\n");
                         System.out.println("1. Yellow\n");
@@ -222,7 +228,7 @@ public class Interface {
                                 householdItem.setColor(HouseholdItem.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item laptop or an individual component?\n");
+                        System.out.println("Is the item a washing machine or an individual utensil?\n");
                         System.out.println("1. Washing\n");
                         System.out.println("2. Utensil\n");
 
@@ -244,7 +250,7 @@ public class Interface {
 
                         householdItem.setPrice(price);
 
-                        System.out.println("What is the ecc level?");
+                        System.out.println("What is the eco level?");
                         int eco = scanner.nextInt();
 
                         householdItem.setEcoLevel(eco);
@@ -293,7 +299,8 @@ public class Interface {
                             }
                         }
                         householdItem.setOffers(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.print("Please enter the name of the manufacturer\n");
+                        scanner.nextLine();
                         manufacturerName = scanner.nextLine();
                         System.out.println("Please enter the country of the manufacturer\n");
                         country = scanner.nextLine();
@@ -321,7 +328,7 @@ public class Interface {
                             component.setColor(householdItem.getColor());
                             component.setPrice(householdItem.getPrice());
                             component.setOffers(householdItem.getOffers());
-                            component.setManufacturer(computerEquipment.getManufacturer());
+                            component.setManufacturer(householdItem.getManufacturer());
                             component.setType(householdItem.getType());
                             DataManipulation.Writting.writeItem(component);
                         }
@@ -329,8 +336,10 @@ public class Interface {
                     case 3:
                         musicEquipment = new MusicEquipment();
                         System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
                         musicEquipment.setName(scanner.nextLine());
                         System.out.println("Choose the color:\n");
+
                         System.out.println("1. Yellow\n");
                         System.out.println("2. Blue\n");
                         System.out.println("3. Green\n");
@@ -377,11 +386,12 @@ public class Interface {
 
                         musicEquipment.setPrice(price);
 
-                        System.out.print("What is the strenght?");
+                        System.out.print("What is the strength?");
+
                         String strength = scanner.nextLine();
 
                         musicEquipment.setStrength(strength);
-
+                        scanner.nextLine();
                         System.out.println("Do you want to enter some special offers?");
                         System.out.println("1. Yes");
                         System.out.println("2. No");
@@ -426,7 +436,8 @@ public class Interface {
                             }
                         }
                         musicEquipment.setOffers(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.print("Please enter the name of the manufacturer\n");
+                        scanner.nextLine();
                         manufacturerName = scanner.nextLine();
                         System.out.println("Please enter the country of the manufacturer\n");
                         country = scanner.nextLine();
@@ -462,6 +473,7 @@ public class Interface {
                     case 4:
                         mobileEquipment = new MobileEquipment();
                         System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
                         mobileEquipment.setName(scanner.nextLine());
                         System.out.println("Choose the color:\n");
                         System.out.println("1. Yellow\n");
@@ -559,7 +571,8 @@ public class Interface {
                             }
                         }
                         mobileEquipment.setOffers(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.print("Please enter the name of the manufacturer\n");
+                        scanner.nextLine();
                         manufacturerName = scanner.nextLine();
                         System.out.println("Please enter the country of the manufacturer\n");
                         country = scanner.nextLine();
@@ -595,6 +608,7 @@ public class Interface {
                     case 5:
                         videoEquipment = new VideoEquipment();
                         System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
                         mobileEquipment.setName(scanner.nextLine());
                         System.out.println("Choose the color:\n");
                         System.out.println("1. Yellow\n");
@@ -696,7 +710,9 @@ public class Interface {
                             }
                         }
                         videoEquipment.setOffers(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.print("Please enter the name of the manufacturer\n");
+
+                        scanner.nextLine();
                         manufacturerName = scanner.nextLine();
                         System.out.println("Please enter the country of the manufacturer\n");
                         country = scanner.nextLine();
@@ -708,7 +724,7 @@ public class Interface {
                         if(videoEquipment.getType() == VideoEquipment.Type.MONITOR) {
                             Monitor component = new Monitor();
                             System.out.print("Does the phone have the fast charging?");
-                            component.setFastCharging(scanner.nextBoolean());
+                            component.setAndroid(scanner.nextBoolean());
                             component.setName(videoEquipment.getName());
                             component.setColor(videoEquipment.getColor());
                             component.setPrice(videoEquipment.getPrice());
@@ -717,9 +733,9 @@ public class Interface {
                             component.setType(videoEquipment.getType());
                             DataManipulation.Writting.writeItem(component);
                         } else {
-                            MobileCase component = new MobileCase();
+                            Tv component = new Tv();
                             System.out.print("Enter the logo.");
-                            component.setLogo(scanner.nextLine());
+                            component.setTypeTv(scanner.nextLine());
                             component.setName(videoEquipment.getName());
                             component.setColor(videoEquipment.getColor());
                             component.setPrice(videoEquipment.getPrice());
@@ -730,6 +746,149 @@ public class Interface {
                         }
                         break;
                     case 6:
+                        virtualReality = new VirtualReality();
+                        System.out.println("Fill out the name of the item\n");
+                        scanner.nextLine();
+                        virtualReality.setName(scanner.nextLine());
+                        System.out.println("Choose the color:\n");
+                        System.out.println("1. Yellow\n");
+                        System.out.println("2. Blue\n");
+                        System.out.println("3. Green\n");
+                        System.out.println("4. Gray\n");
+                        System.out.println("5. Black\n");
+                        System.out.println("6. White\n");
+                        color = scanner.nextInt();
+                        if(color>6||color<1) {
+                            return false;
+                        } else {
+                            if(color == 1) {
+                                virtualReality.setColor(VirtualReality.Color.YELLOW);
+                            } else if (color == 2) {
+                                virtualReality.setColor(VirtualReality.Color.BLUE);
+                            } else if( color == 3) {
+                                virtualReality.setColor(VirtualReality.Color.GREEN);
+                            } else if (color == 4) {
+                                virtualReality.setColor(VirtualReality.Color.GRAY);
+                            } else if (color == 5) {
+                                virtualReality.setColor(VirtualReality.Color.BLACK);
+                            } else if (color == 6) {
+                                virtualReality.setColor(VirtualReality.Color.WHITE);
+                            }
+                        }
+                        System.out.println("Is the item VrController or is it wearable?\n");
+                        System.out.println("1. VrController\n");
+                        System.out.println("2. VrGlasses\n");
+
+
+                        type = scanner.nextInt();
+                        if(type > 2 || type < 1) {
+
+                            return false;
+                        }
+
+                        if (type == 1) {
+                            virtualReality.setType(VirtualReality.TypeReality.CONTROLLER);
+                        } else {
+                            virtualReality.setType(VirtualReality.TypeReality.GLASSES);
+                        }
+
+                        System.out.println("Please enter the price of the item.");
+                        price = scanner.nextDouble();
+                        virtualReality.setPrice(price);
+
+
+
+                        System.out.print("What is the type of technology?");
+                        String technologyType = scanner.nextLine();
+
+                        virtualReality.setTypeOfTechnology(technologyType);
+                        virtualReality.setTypeOfTechnology(technologyType);
+
+                        System.out.println("Do you want to enter some special offers?");
+                        System.out.println("1. Yes");
+                        System.out.println("2. No");
+
+                        offer = scanner.nextInt();
+
+
+                        offers = new ArrayList<>();
+                        if(offer == 1) {
+
+                            while(true) {
+
+                                scanner.nextLine();
+
+                                System.out.print("Please enter the start date of the special offer. Format (31/01/1999\n");
+                                String start = scanner.nextLine();
+
+
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                String end = scanner.nextLine();
+
+                                System.out.println("Enter the name of the special offer?\n");
+                                String name = scanner.nextLine();
+                                System.out.println("Please enter the amount of discount in %?\n");
+                                Double discount = scanner.nextDouble();
+                                Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
+                                Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
+                                SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
+                                offers.add(offerCurrent);
+                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                int continueAnswer = scanner.nextInt();
+                                try {
+                                    if (continueAnswer == 1) {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                } catch(Exception ee) {
+                                    break;
+                                }
+
+                            }
+                        }
+                        virtualReality.setOffer(offers);
+                        System.out.println("Please enter the name of the manufacturer\n");
+                        scanner.nextLine();
+                        manufacturerName = scanner.nextLine();
+                        System.out.println("Please enter the country of the manufacturer\n");
+                        country = scanner.nextLine();
+                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        status = scanner.nextLine();
+                        manufacturer = new Manufacturer(manufacturerName, country, status);
+                        virtualReality.setManufacturer(manufacturer);
+
+                        if(virtualReality.getType() == VirtualReality.TypeReality.CONTROLLER) {
+                            VrController component = new VrController();
+                            System.out.print("How many buttons does the controller have?");
+                            component.setNumberOfButtons(scanner.nextInt());
+                            component.setName(virtualReality.getName());
+                            component.setColor(virtualReality.getColor());
+                            component.setPrice(virtualReality.getPrice());
+                            component.setOffer(virtualReality.getOffer());
+                            component.setManufacturer(virtualReality.getManufacturer());
+                            component.setType(virtualReality.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        } else {
+                            VrGlasses component = new VrGlasses();
+                            System.out.print("What is the techology?\n1.Non immersive\n2.Semi immersive\n3.Fully immersive");
+                            if(scanner.nextInt() == 1) {
+                                component.setTypeGlasses(VrGlasses.TypeGlasses.NONIMMERSIVE);
+                            } else if (scanner.nextInt() == 2) {
+                                component.setTypeGlasses(VrGlasses.TypeGlasses.SEMIIMMERSIVE);
+
+                            } else if (scanner.nextInt() == 3) {
+                                component.setTypeGlasses(VrGlasses.TypeGlasses.FULLYIMMERSIVE);
+
+                            }
+                            component.setName(virtualReality.getName());
+                            component.setColor(virtualReality.getColor());
+                            component.setPrice(virtualReality.getPrice());
+                            component.setOffer(virtualReality.getOffer());
+                            component.setManufacturer(virtualReality.getManufacturer());
+                            component.setType(virtualReality.getType());
+                            DataManipulation.Writting.writeItem(component);
+                        }
                         break;
 
                 }

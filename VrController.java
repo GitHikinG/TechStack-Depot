@@ -12,6 +12,10 @@ public class VrController extends VirtualReality implements Serializable {
         this.numberOfButtons = numberOfButtons;
     }
 
+    public VrController() {
+
+    }
+
 
     public int getNumberOfButtons() {
         return numberOfButtons;

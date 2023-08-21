@@ -3,18 +3,16 @@ import java.util.List;
 
 public class Monitor extends VideoEquipment implements Serializable {
 
-    private boolean densitu;
+    private boolean android;
     private static final long serialVersionUID = 1L;
 
 
-    public Monitor(boolean densitu) {
-
-        this.densitu = densitu;
+    public boolean isAndroid() {
+        return android;
     }
 
-    public Monitor(String name, Type type, Double price, List<SpecialOffer> offers, Color color, Manufacturer manufacturer, double diameter, String resolution, boolean densitu) {
-        super(name, type, price, offers, color, manufacturer, diameter, resolution);
-        this.densitu = densitu;
+    public void setAndroid(boolean android) {
+        this.android = android;
     }
 
     public Monitor() {
@@ -22,11 +20,5 @@ public class Monitor extends VideoEquipment implements Serializable {
     }
 
 
-    public boolean isDensitu() {
-        return densitu;
-    }
 
-    public void setDensitu(boolean densitu) {
-        this.densitu = densitu;
-    }
 }
