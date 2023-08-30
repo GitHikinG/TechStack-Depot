@@ -29,7 +29,7 @@ public class UserInterface {
                     "    |  |     |   __|  |  |     |   __   |        \\   \\       |  |      /  /_\\  \\  |  |     |    <   \n" +
                     "    |  |     |  |____ |  `----.|  |  |  |    .----)   |      |  |     /  _____  \\ |  `----.|  .  \\  \n" +
                     "    |__|     |_______| \\______||__|  |__|    |_______/       |__|    /__/     \\__\\ \\______||__|\\__\\\n");
-            System.out.println("Current net gain from sales is: " + currentTotal + "EUR" );
+            System.out.println("Current net gain from sales is: " + currentTotal + " EUR" );
             System.out.println("Main menu");
             System.out.println("1. Adding items.");
             System.out.println("2. Deleting items.");
@@ -107,8 +107,13 @@ public class UserInterface {
                             System.out.println(String.valueOf(index + 1) + ". " + itemCurrent);
                             index += 1;
                         }
+                        int toRemove = -1;
+                        if (scanner.hasNextInt()) {
+                            toRemove = scanner.nextInt();
+                        } else {
+                            main(args);
+                        }
 
-                        int toRemove = scanner.nextInt();
                         itemsReturned.add(itemsInCart.get(toRemove - 1));
                         List<Object> removed = Interface.InterfaceImplementation.ReturningItems(itemsInCart ,args, toRemove);
                         currentTotal = 0;

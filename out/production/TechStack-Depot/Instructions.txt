@@ -60,24 +60,7 @@ TypeEquipment, Color, name, type, price, offer, manufacturer, yearsOfWarranty
 
 
 
-narisiHistogram
-ima parametre listu stevil katera prikazejo visino histograma na tem mestu
-
-
-primer:
-narisiHistogram(1, 1,2 3, 5)
-
-
-rezultatL
-
-     
-     
-    
-    *
-    *
-   **
-  ***
-*****
+	
 
 
 

@@ -20,12 +20,12 @@ public class Interface {
             System.out.println("What kind of item do you want to add?\n");
 
 
-            System.out.println("1. Computer equipment\n");
-            System.out.println("2. Household item\n");
-            System.out.println("3. Music equipment\n");
-            System.out.println("4. Mobile equipment\n");
-            System.out.println("5. Video equipment\n");
-            System.out.println("6. Virtual reality\n");
+            System.out.println("1. Computer equipment");
+            System.out.println("2. Household item");
+            System.out.println("3. Music equipment");
+            System.out.println("4. Mobile equipment");
+            System.out.println("5. Video equipment");
+            System.out.println("6. Virtual reality");
             System.out.println("404. Main menu");
 
 
@@ -40,13 +40,13 @@ public class Interface {
                         System.out.println("Fill out the name of the item\n");
                         scanner.nextLine();
                         computerEquipment.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        System.out.println("Choose the color:");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         int color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -65,9 +65,9 @@ public class Interface {
                                 computerEquipment.setColor(ComputerEquipment.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item laptop or an individual component?\n");
-                        System.out.println("1. Laptop\n");
-                        System.out.println("2. Component\n");
+                        System.out.println("Is the item laptop or an individual component?");
+                        System.out.println("1. Laptop");
+                        System.out.println("2. Component");
 
 
                         int type = scanner.nextInt();
@@ -110,18 +110,18 @@ public class Interface {
                                 String start = scanner.nextLine();
 
 
-                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -139,20 +139,20 @@ public class Interface {
                         System.out.print("Please enter the name of the manufacturer\n");
                         scanner.nextLine();
                         String manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         String country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         String status = scanner.nextLine();
                         Manufacturer manufacturer = new Manufacturer(manufacturerName, country, status);
                         computerEquipment.setManufacturer(manufacturer);
 
                         if(computerEquipment.getType() == ComputerEquipment.TypeEquipment.COMPONENT) {
                             Component component = new Component();
-                            System.out.println("Please enter the type of the component\n");
-                            System.out.println("1. SSD\n");
-                            System.out.println("2. VIDEOCARD\n");
-                            System.out.println("3. RAM\n");
-                            System.out.println("4. COOLING\n");
+                            System.out.println("Please enter the type of the component");
+                            System.out.println("1. SSD");
+                            System.out.println("2. VIDEOCARD");
+                            System.out.println("3. RAM");
+                            System.out.println("4. COOLING");
 
                             int typeResult= scanner.nextInt();
 
@@ -178,10 +178,10 @@ public class Interface {
                             DataManipulation.Writting.writeItem(component);
                         } else {
                             Laptop component = new Laptop();
-                            System.out.println("Please enter the amount of ram\n");
+                            System.out.println("Please enter the amount of ram");
                             int ram = scanner.nextInt();
 
-                            System.out.println("Please enter the amount of storage\n");
+                            System.out.println("Please enter the amount of storage");
                             int storage = scanner.nextInt();
 
                             component.setName(computerEquipment.getName());
@@ -200,16 +200,16 @@ public class Interface {
                         break;
                     case 2:
                         householdItem = new HouseholdItem();
-                        System.out.println("Fill out the name of the item\n");
+                        System.out.println("Fill out the name of the item");
                         scanner.nextLine();
                         householdItem.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        System.out.println("Choose the color:");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -228,9 +228,9 @@ public class Interface {
                                 householdItem.setColor(HouseholdItem.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item a washing machine or an individual utensil?\n");
-                        System.out.println("1. Washing\n");
-                        System.out.println("2. Utensil\n");
+                        System.out.println("Is the item a washing machine or an individual utensil?");
+                        System.out.println("1. Washing");
+                        System.out.println("2. Utensil");
 
 
                         type = scanner.nextInt();
@@ -250,7 +250,7 @@ public class Interface {
 
                         householdItem.setPrice(price);
 
-                        System.out.println("What is the eco level?");
+                        System.out.println("What is the eco level (number)?");
                         int eco = scanner.nextInt();
 
                         householdItem.setEcoLevel(eco);
@@ -273,18 +273,18 @@ public class Interface {
                                 String start = scanner.nextLine();
 
 
-                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -302,9 +302,9 @@ public class Interface {
                         System.out.print("Please enter the name of the manufacturer\n");
                         scanner.nextLine();
                         manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         status = scanner.nextLine();
                         manufacturer = new Manufacturer(manufacturerName, country, status);
                         householdItem.setManufacturer(manufacturer);
@@ -335,17 +335,17 @@ public class Interface {
                         break;
                     case 3:
                         musicEquipment = new MusicEquipment();
-                        System.out.println("Fill out the name of the item\n");
+                        System.out.println("Fill out the name of the item");
                         scanner.nextLine();
                         musicEquipment.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
+                        System.out.println("Choose the color:");
 
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -364,9 +364,9 @@ public class Interface {
                                 musicEquipment.setColor(MusicEquipment.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item headphone or a microphone?\n");
-                        System.out.println("1. Headphone\n");
-                        System.out.println("2. Microphone\n");
+                        System.out.println("Is the item headphone or a microphone?");
+                        System.out.println("1. Headphone");
+                        System.out.println("2. Microphone");
 
 
                         type = scanner.nextInt();
@@ -410,18 +410,18 @@ public class Interface {
                                 String start = scanner.nextLine();
 
 
-                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -439,16 +439,16 @@ public class Interface {
                         System.out.print("Please enter the name of the manufacturer\n");
                         scanner.nextLine();
                         manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         status = scanner.nextLine();
                         manufacturer = new Manufacturer(manufacturerName, country, status);
                         musicEquipment.setManufacturer(manufacturer);
 
                         if(musicEquipment.getType() == MusicEquipment.Type.HEADPHONE) {
                             Headphone component = new Headphone();
-                            System.out.print("Is the component wireless?");
+                            System.out.print("Is the component wireless (True/False)?");
                             component.setWireless(scanner.nextBoolean());
                             component.setName(musicEquipment.getName());
                             component.setColor(musicEquipment.getColor());
@@ -472,16 +472,16 @@ public class Interface {
                         break;
                     case 4:
                         mobileEquipment = new MobileEquipment();
-                        System.out.println("Fill out the name of the item\n");
+                        System.out.println("Fill out the name of the item");
                         scanner.nextLine();
                         mobileEquipment.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        System.out.println("Choose the color:");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -500,9 +500,9 @@ public class Interface {
                                 mobileEquipment.setColor(MobileEquipment.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item phone or a case?\n");
-                        System.out.println("1. Phone\n");
-                        System.out.println("2. Case\n");
+                        System.out.println("Is the item phone or a case?");
+                        System.out.println("1. Phone");
+                        System.out.println("2. Case");
 
 
                         type = scanner.nextInt();
@@ -548,15 +548,15 @@ public class Interface {
                                 System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -574,16 +574,16 @@ public class Interface {
                         System.out.print("Please enter the name of the manufacturer\n");
                         scanner.nextLine();
                         manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         status = scanner.nextLine();
                         manufacturer = new Manufacturer(manufacturerName, country, status);
                         mobileEquipment.setManufacturer(manufacturer);
 
                         if(mobileEquipment.getType() == MobileEquipment.Type.PHONE) {
                             MobilePhone component = new MobilePhone();
-                            System.out.print("Does the phone have the fast charging?");
+                            System.out.print("Does the phone have the fast charging (True/False)?");
                             component.setFastCharging(scanner.nextBoolean());
                             component.setName(mobileEquipment.getName());
                             component.setColor(mobileEquipment.getColor());
@@ -607,16 +607,16 @@ public class Interface {
                         break;
                     case 5:
                         videoEquipment = new VideoEquipment();
-                        System.out.println("Fill out the name of the item\n");
+                        System.out.println("Fill out the name of the item");
                         scanner.nextLine();
-                        mobileEquipment.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        videoEquipment.setName(scanner.nextLine());
+                        System.out.println("Choose the color:");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -635,9 +635,9 @@ public class Interface {
                                 videoEquipment.setColor(VideoEquipment.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item monitor or a TV?\n");
-                        System.out.println("1. Monitor\n");
-                        System.out.println("2. TV\n");
+                        System.out.println("Is the item monitor or a TV?");
+                        System.out.println("1. Monitor");
+                        System.out.println("2. TV");
 
 
                         type = scanner.nextInt();
@@ -657,10 +657,11 @@ public class Interface {
 
                         videoEquipment.setPrice(price);
 
-                        System.out.print("What is the diameter?");
+                        System.out.print("What is the diameter? (Number)");
                         double diameter = scanner.nextDouble();
 
-                        System.out.print("What is the resolution?");
+                        System.out.print("What is the resolution?(4K)");
+                        scanner.nextLine();
                         String resolution = scanner.nextLine();
 
                         videoEquipment.setDiameter(diameter);
@@ -684,18 +685,18 @@ public class Interface {
                                 String start = scanner.nextLine();
 
 
-                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -714,16 +715,16 @@ public class Interface {
 
                         scanner.nextLine();
                         manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         status = scanner.nextLine();
                         manufacturer = new Manufacturer(manufacturerName, country, status);
                         videoEquipment.setManufacturer(manufacturer);
 
                         if(videoEquipment.getType() == VideoEquipment.Type.MONITOR) {
                             Monitor component = new Monitor();
-                            System.out.print("Does the phone have the fast charging?");
+                            System.out.print("Does the phone have the fast charging? (True/False)");
                             component.setAndroid(scanner.nextBoolean());
                             component.setName(videoEquipment.getName());
                             component.setColor(videoEquipment.getColor());
@@ -747,16 +748,16 @@ public class Interface {
                         break;
                     case 6:
                         virtualReality = new VirtualReality();
-                        System.out.println("Fill out the name of the item\n");
+                        System.out.println("Fill out the name of the item");
                         scanner.nextLine();
                         virtualReality.setName(scanner.nextLine());
-                        System.out.println("Choose the color:\n");
-                        System.out.println("1. Yellow\n");
-                        System.out.println("2. Blue\n");
-                        System.out.println("3. Green\n");
-                        System.out.println("4. Gray\n");
-                        System.out.println("5. Black\n");
-                        System.out.println("6. White\n");
+                        System.out.println("Choose the color:");
+                        System.out.println("1. Yellow");
+                        System.out.println("2. Blue");
+                        System.out.println("3. Green");
+                        System.out.println("4. Gray");
+                        System.out.println("5. Black");
+                        System.out.println("6. White");
                         color = scanner.nextInt();
                         if(color>6||color<1) {
                             return false;
@@ -775,9 +776,9 @@ public class Interface {
                                 virtualReality.setColor(VirtualReality.Color.WHITE);
                             }
                         }
-                        System.out.println("Is the item VrController or is it wearable?\n");
-                        System.out.println("1. VrController\n");
-                        System.out.println("2. VrGlasses\n");
+                        System.out.println("Is the item VrController or is it wearable?");
+                        System.out.println("1. VrController");
+                        System.out.println("2. VrGlasses");
 
 
                         type = scanner.nextInt();
@@ -822,18 +823,18 @@ public class Interface {
                                 String start = scanner.nextLine();
 
 
-                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999\n");
+                                System.out.println("Please enter the end date of the special offer. Format (31/01/1999");
                                 String end = scanner.nextLine();
 
-                                System.out.println("Enter the name of the special offer?\n");
+                                System.out.println("Enter the name of the special offer?");
                                 String name = scanner.nextLine();
-                                System.out.println("Please enter the amount of discount in %?\n");
+                                System.out.println("Please enter the amount of discount in %?");
                                 Double discount = scanner.nextDouble();
                                 Date startDate = new SimpleDateFormat("dd/MM/yyyy").parse(start);
                                 Date endDate = new SimpleDateFormat("dd/MM/yyyy").parse(end);
                                 SpecialOffer offerCurrent = new SpecialOffer(startDate, endDate, name, discount);
                                 offers.add(offerCurrent);
-                                System.out.println("If you want to continue press 1, otherwise any other number.\n");
+                                System.out.println("If you want to continue press 1, otherwise any other number.");
                                 int continueAnswer = scanner.nextInt();
                                 try {
                                     if (continueAnswer == 1) {
@@ -848,12 +849,12 @@ public class Interface {
                             }
                         }
                         virtualReality.setOffer(offers);
-                        System.out.println("Please enter the name of the manufacturer\n");
+                        System.out.println("Please enter the name of the manufacturer");
                         scanner.nextLine();
                         manufacturerName = scanner.nextLine();
-                        System.out.println("Please enter the country of the manufacturer\n");
+                        System.out.println("Please enter the country of the manufacturer");
                         country = scanner.nextLine();
-                        System.out.println("Please enter the legal status of the manufacturer\n");
+                        System.out.println("Please enter the legal status of the manufacturer");
                         status = scanner.nextLine();
                         manufacturer = new Manufacturer(manufacturerName, country, status);
                         virtualReality.setManufacturer(manufacturer);
@@ -872,12 +873,13 @@ public class Interface {
                         } else {
                             VrGlasses component = new VrGlasses();
                             System.out.print("What is the techology?\n1.Non immersive\n2.Semi immersive\n3.Fully immersive");
-                            if(scanner.nextInt() == 1) {
+                            int chGlasses = scanner.nextInt();
+                            if(chGlasses == 1) {
                                 component.setTypeGlasses(VrGlasses.TypeGlasses.NONIMMERSIVE);
-                            } else if (scanner.nextInt() == 2) {
+                            } else if (chGlasses == 2) {
                                 component.setTypeGlasses(VrGlasses.TypeGlasses.SEMIIMMERSIVE);
 
-                            } else if (scanner.nextInt() == 3) {
+                            } else if (chGlasses == 3) {
                                 component.setTypeGlasses(VrGlasses.TypeGlasses.FULLYIMMERSIVE);
 
                             }
@@ -922,7 +924,7 @@ public class Interface {
         public static Object BuyingItems(String[] args) {
             try {
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Please enter the number of the item you want to buy.\n");
+                System.out.println("Please enter the number of the item you want to buy.");
 
                 List<Object> items = new ArrayList<Object>();
 
